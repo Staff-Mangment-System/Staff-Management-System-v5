@@ -34,5 +34,4 @@ public:
     {
         return salary >= 0;
     }
-    void hello() { int i; i = 0; }
 };
