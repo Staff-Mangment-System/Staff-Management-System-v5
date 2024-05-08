@@ -12,7 +12,6 @@ int main()
 
 /*
 Missed : 
-Salary Calculator
 Find Employee by highWage
-(Employee Validator, InputHandler, OutputHandler) not functional 
+( InputHandler, OutputHandler) not functional 
 */

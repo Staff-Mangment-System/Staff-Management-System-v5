@@ -16,6 +16,7 @@ public:
         cout << "5. Display All Employees" << endl;
         cout << "6. Exit" << endl;
         cout << "7. Calculate Salary" << endl;
+        cout << "8. Display All Employees With High Wage" << endl;
         cout << "-----------------------" << endl;
     }
     void selectOption() {
@@ -51,12 +52,15 @@ public:
             case 7:
                 db.CalcSalary();
                 break;
+            case 8:
+                db.FindEmployeeByHighwage();
+                break;
             default:
                 cout << "Invalid choice. Please try again." << endl;
                 break;
             }
 
-        } while (choice != 7);
+        } while (choice != 8);
     }
 
     void executeOption() {

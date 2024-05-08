@@ -1,46 +1,27 @@
 #pragma once
-#include <iostream>
-#include <string>
-#include <vector>
-#include <fstream>
-#include <sstream> 
 #include "Employee.h"
-
-using namespace std;
+#include <iostream>
+#include <fstream>
+#include <vector>
 
 class OutputHandler {
 public:
-    vector<Employee> readDataFromFile() {
-        vector<Employee> employees;
-        ifstream inFile("employee_data.txt");
-        if (inFile.is_open()) {
-            string line;
-            while (getline(inFile, line)) {
-                stringstream ss(line);
-                string token;
-                int id, age;
-                string name, address, role;
-                double salary;
-
-                getline(ss, token, ',');
-                id = stoi(token);
-                getline(ss, name, ',');
-                getline(ss, token, ',');
-                age = stoi(token);
-                getline(ss, address, ',');
-                getline(ss, role, ',');
-                getline(ss, token, ',');
-                salary = stod(token);
-
-                Employee employee(id, name, age, address, role, salary);
-                employees.push_back(employee);
+    static void writeDataToFile(const std::vector<Employee>& employees) {
+        std::ofstream outFile("employee_data.txt");
+        if (outFile.is_open()) {
+            for (const auto& employee : employees) {
+                outFile << employee.getId() << ","
+                    << employee.getName() << ","
+                    << employee.getAge() << ","
+                    << employee.getAddress() << ","
+                    << employee.getRole() << ","
+                    << employee.getSalary() << "\n";
             }
-            inFile.close();
-            cout << "Data read from file successfully." << endl;
+            outFile.close();
+            std::cout << "Data written to file successfully." << std::endl;
         }
         else {
-            cout << "Unable to open file." << endl;
+            std::cout << "Unable to open file." << std::endl;
         }
-        return employees;
     }
 };
