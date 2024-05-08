@@ -17,6 +17,8 @@ public:
         cout << "6. Exit" << endl;
         cout << "7. Calculate Salary" << endl;
         cout << "8. Display All Employees With High Wage" << endl;
+        cout << "9. Save data to file" << endl;
+        cout << "10. Load Data from file" << endl;
         cout << "-----------------------" << endl;
     }
     void selectOption() {
@@ -55,12 +57,28 @@ public:
             case 8:
                 db.FindEmployeeByHighwage();
                 break;
+            case 9:
+            {
+                string saveFilename;
+                cout << "Enter filename to save data: ";
+                cin >> saveFilename;
+                db.saveDataToFile(saveFilename);
+            }
+            break;
+            case 10:
+            {
+                string loadFilename;
+                cout << "Enter filename to load data: ";
+                cin >> loadFilename;
+                db.loadDataFromFile(loadFilename);
+            }
+            break;
             default:
                 cout << "Invalid choice. Please try again." << endl;
                 break;
             }
 
-        } while (choice != 8);
+        } while (choice != 6);
     }
 
     void executeOption() {

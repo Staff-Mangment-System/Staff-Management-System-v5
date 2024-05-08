@@ -133,9 +133,8 @@
     <ClInclude Include="Database.h" />
     <ClInclude Include="Employee.h" />
     <ClInclude Include="EmployeeValidator.h" />
-    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="InputAndOutputHandler.h" />
     <ClInclude Include="Menu.h" />
-    <ClInclude Include="OutputHandler.h" />
     <ClInclude Include="SalaryCalc.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -5,8 +5,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include "InputHandler.h"
-#include "OutputHandler.h"
+#include "InputAndOutputHandler.h"
 #include "EmployeeValidator.h"
 
 using namespace std;
@@ -250,14 +249,13 @@ public:
         }
     }
 
-
-    void readDataFromFile() {
-        InputHandler inputHandler;
-        employees = inputHandler.readDataFromFile();
+    void loadDataFromFile(const string& filename) {
+        employees = InputHandler::readDataFromFile(filename);
     }
 
-    void writeDataToFile() {
-        OutputHandler outputHandler;
-        outputHandler.writeDataToFile(employees);
+    void saveDataToFile(const string& filename) {
+        OutputHandler::writeDataToFile(employees, filename);
     }
+    
+    
 };
