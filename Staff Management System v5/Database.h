@@ -1,5 +1,6 @@
 #pragma once
 #include "Employee.h"
+#include "SalaryCalc.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -174,5 +175,19 @@ public:
                 cout << "-----------------------" << endl;
             }
         }
+    }
+    void CalcSalary() {
+        int h;
+        int pph;
+        SalaryCalc x;
+        cout << "Enter Employee hours" << endl;
+        cin >> h;
+        cout << "Enter Employee Pay Per Hour" << endl;
+        cin >> pph;
+        x.setHour(h);
+        x.setpayPerHour(pph);
+        cout << "Employee hours = " << x.getHour() << " hours" << endl;
+        cout << "Employee pay rate = " << x.getpayPerHour() << " hours" << endl;
+        cout << "Employee Salary = " << x.getCalcSal() << " $" << endl;
     }
 };

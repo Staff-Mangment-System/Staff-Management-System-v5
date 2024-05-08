@@ -15,6 +15,7 @@ public:
         cout << "4. Delete Employee" << endl;
         cout << "5. Display All Employees" << endl;
         cout << "6. Exit" << endl;
+        cout << "7. Calculate Salary" << endl;
         cout << "-----------------------" << endl;
     }
     void selectOption() {
@@ -47,12 +48,15 @@ public:
             case 6:
                 cout << "Exiting the program..." << endl;
                 return ;
+            case 7:
+                db.CalcSalary();
+                break;
             default:
                 cout << "Invalid choice. Please try again." << endl;
                 break;
             }
 
-        } while (choice != 6);
+        } while (choice != 7);
     }
 
     void executeOption() {
