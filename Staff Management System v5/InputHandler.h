@@ -1,30 +1,24 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include<vector>
 #include "Employee.h"
-class InputHandler
-{
+#include <fstream>
+using namespace std;
+
+class InputHandler {
 public:
-    static int getIntInput()
-    {
-        int input;
-        cin >> input;
-        return input;
-    }
-
-    static double getDoubleInput()
-    {
-        double input;
-        cin >> input;
-        return input;
-    }
-
-    static string getStringInput()
-    {
-        string input;
-        cin.ignore();
-        getline(cin, input);
-        return input;
+    void saveDataToFile(const vector<Employee>& employees) {
+        ofstream outFile("employee_data.txt");
+        if (outFile.is_open()) {
+            for (const auto& employee : employees) {
+                outFile << employee.getId() << "," << employee.getName() << "," << employee.getAge() << "," << employee.getAddress() << "," << employee.getRole() << "," << employee.getSalary() << endl;
+            }
+            outFile.close();
+            cout << "Data saved to file successfully." << endl;
+        }
+        else {
+            cout << "Unable to open file." << endl;
+        }
     }
 };
-

@@ -1,24 +1,46 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
+#include <fstream>
+#include <sstream> 
 #include "Employee.h"
-class OutputHandler
-{
-public:
-    static void displayMessage(const string& message)
-    {
-        cout << message << endl;
-    }
 
-    static void displayEmployeeDetails(const Employee& employee)
-    {
-        cout << "Employee Details:" << endl;
-        cout << "ID: " << employee.getId() << endl;
-        cout << "Name: " << employee.getName() << endl;
-        cout << "Age: " << employee.getAge() << endl;
-        cout << "Address: " << employee.getAddress() << endl;
-        cout << "Role: " << employee.getRole() << endl;
-        cout << "Salary: " << employee.getSalary() << endl;
-        cout << endl;
+using namespace std;
+
+class OutputHandler {
+public:
+    vector<Employee> readDataFromFile() {
+        vector<Employee> employees;
+        ifstream inFile("employee_data.txt");
+        if (inFile.is_open()) {
+            string line;
+            while (getline(inFile, line)) {
+                stringstream ss(line);
+                string token;
+                int id, age;
+                string name, address, role;
+                double salary;
+
+                getline(ss, token, ',');
+                id = stoi(token);
+                getline(ss, name, ',');
+                getline(ss, token, ',');
+                age = stoi(token);
+                getline(ss, address, ',');
+                getline(ss, role, ',');
+                getline(ss, token, ',');
+                salary = stod(token);
+
+                Employee employee(id, name, age, address, role, salary);
+                employees.push_back(employee);
+            }
+            inFile.close();
+            cout << "Data read from file successfully." << endl;
+        }
+        else {
+            cout << "Unable to open file." << endl;
+        }
+        return employees;
     }
 };
