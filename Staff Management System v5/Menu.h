@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include <string>
 #include "Database.h"
 class Menu
 {
@@ -10,7 +9,6 @@ public:
         cout << "Employee Database" << endl;
         cout << "-----------------------" << endl;
         cout << "1. Add Employee" << endl;
-        cout << "2. Find Employee by ID" << endl;
         cout << "3. Edit Employee" << endl;
         cout << "4. Delete Employee" << endl;
         cout << "5. Display All Employees" << endl;
@@ -24,12 +22,22 @@ public:
     void selectOption() {
         Database db;
         int choice;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        while (!(cin >> choice) || choice < 1 || choice>10)
+        {
+            cout << "Invalid Choice , Please Try Again" << endl;
+            cout << "Enter your choice: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            
+        }
 
         do
         {
 
-            cout << "Enter your choice: ";
-            cin >> choice;
+            
 
             switch (choice)
             {

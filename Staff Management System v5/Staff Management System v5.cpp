@@ -10,8 +10,3 @@ int main()
 }
 
 
-/*
-Missed : 
-Find Employee by highWage
-( InputHandler, OutputHandler) not functional 
-*/
